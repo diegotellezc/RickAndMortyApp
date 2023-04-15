@@ -1,18 +1,50 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import ResidentCard from './ResidentCard'
 
 const ResidentList = ({location}) => {
-    
+    const [currentPage, setCurrentPage] = useState(1)
+
+    const RESIDENTS_PER_PAGE = 20
+    const arrayPages = []
+    const quantityPages = Math.ceil(location?.residents.length / RESIDENTS_PER_PAGE)
+
+    for (let i = 1; i <= quantityPages; i++){
+        arrayPages.push(i)
+    }
+
+    const startCut = currentPage * RESIDENTS_PER_PAGE - RESIDENTS_PER_PAGE
+    const endCut = currentPage * RESIDENTS_PER_PAGE
+
     const residents = location?.residents
 
+    useEffect(() => {
+        setCurrentPage(1)
+    }, [location])
+
     return (
-        <section>
-            {
-                residents?.map((resident) => (
-                    <ResidentCard key={resident} resident={resident} />
-                ))
-            }
-        </section>
+        <>
+            <section className='p-4 grid gap-8 auto-rows-auto grid-cols-[repeat(auto-fill,_minmax(220px,_1fr))] max-w-[1250px] mx-auto'>
+                {
+                    location?.residents.length !== 0 ?
+                    residents?.slice(startCut, endCut).map((resident) => (
+                        <ResidentCard key={resident} resident={resident} />
+                    )) : <div className='flex flex-col gap-4 border-4'>
+                        <div>
+                            <img src="https://www.looper.com/img/gallery/blink-and-youll-miss-an-animation-error-in-rick-and-morty-season-6-episode-2/l-intro-1662656057.jpg" alt="" />
+                        </div>
+                        <h1 className='p-4'>There is no population in this dimension</h1>
+                    </div>
+                }
+            </section>
+
+            <section>
+                <ul className='flex justify-center gap-8 py-4'>
+                    {
+                        arrayPages.map(page => <li onClick={() => setCurrentPage(page)} className={`p-3 rounded-md cursor-pointer ${page === currentPage && "bg-green-800 text-white font-bold"}`} key={page}>{page}</li>)
+                    }
+                </ul>
+            </section>
+        </>
     )
 }
 
