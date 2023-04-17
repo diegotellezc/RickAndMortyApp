@@ -61,10 +61,10 @@ function App() {
           </div>
 
           {
-            inputValue && <ul className='absolute top-[44px] bg-black/90 p-4 grid gap-4 text-sm z-20 border-2 border-dark-green'>
+            inputValue && <ul className='absolute top-[44px] bg-black/90 gridtext-sm z-20 border-2 border-dark-green sm:w-[600px]'>
                 {
                   dimensionsArray?.results.map((dimension) => (
-                    <li key={dimension.id} className='text-white cursor-pointer' onClick={() => handleDimension(dimension.url)}>
+                    <li key={dimension.id} className='text-white p-4 cursor-pointer hover:bg-dark-green hover:text-black' onClick={() => handleDimension(dimension.url)}>
                       {dimension.name}
                     </li>
                   ))
