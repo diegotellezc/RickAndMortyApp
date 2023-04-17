@@ -7,15 +7,30 @@ import ResidentList from './components/ResidentList'
 
 function App() {
   const [location, setLocation] = useState()
+  const [inputValue, setInputValue] = useState("")
+  const [dimensionsArray, setDimensionsArray] = useState()
+  console.log(dimensionsArray)
 
-  const handleSubmit = (e) => {
+  const handleInputValue = (e) => {
     e.preventDefault()
-    const newLocation = e.target.locationId.value
+    setInputValue(e.target.value)
+    const newLocation = e.target.value
 
-    axios.get(`https://rickandmortyapi.com/api/location/${newLocation}`)
-    .then((res) => setLocation(res.data))
+    const URL = `https://rickandmortyapi.com/api/location/?name=${newLocation}`
+    axios.get(URL)
+    .then((res) => setDimensionsArray(res.data))
     .catch((err) => console.log(err))
   }
+
+  const handleDimension = (dimensionUrl) => {
+
+      axios.get(dimensionUrl)
+      .then((res) => setLocation(res.data))
+      .catch((err) => console.log(err))
+
+      setInputValue("")
+  }
+  
 
   useEffect(() => {
     const URL = `https://rickandmortyapi.com/api/location/${getRandomDimension()}`
@@ -33,17 +48,29 @@ function App() {
       <header className='flex flex-col items-center gap-8 mb-8'>
         <div className='flex justify-center'>
           <img className='absolute top-0 w-[100%] z-0 lg:w-[70%] 2xl:w-[55%]' src="/images/greenShadow-title.png" alt="" />
-          <img className='w-[70%] m-auto z-10' src="/images/circle-title-rick.png" alt="" />
+          <img className='w-[70%] z-10' src="/images/circle-title-rick.png" alt="" />
           <img className='absolute z-20 w-[80%] top-8 hover:animate-pulse sm:w-[60%] lg:w-[40%]' src="/images/title-rickandmorty.png" alt="" />
         </div>
 
-        <form onSubmit={handleSubmit} className='flex flex-col items-center gap-8'>
-          <div className='flex w-auto h-[45px] border-2 border-dark-green'>
-              <input id='locationId' className='w-[80%] h-full border-2 border-none px-6 bg-transparent text-white' type="text" placeholder='Type a location Id...' />
-              <button className='flex justify-center items-center bg-light-green w-[20%] h-full border-dark-green border-l-2 text-white text-xl hover:bg-dark-green hover:text-black'>
-                  <i className='bx bx-search'></i>
-              </button>
+        <form className='flex flex-col items-center relative gap-8'>
+          <div className='flex w-auto h-[45px] border-2 border-dark-green sm:w-[600px]'>
+                <input id='locationId' autocomplete="off" value={inputValue} onChange={handleInputValue} className='w-[80%] h-full border-2 border-none px-8 bg-transparent text-white' type="text" placeholder='Type a dimension...' />
+                <button className='flex justify-center items-center bg-light-green w-[21%] h-full border-dark-green border-l-2 text-white text-xl hover:bg-dark-green hover:text-black'>
+                    <i className='bx bx-search'></i>
+                </button>
           </div>
+
+          {
+            inputValue && <ul className='absolute top-[44px] bg-black/90 p-4 grid gap-4 text-sm z-20 border-2 border-dark-green'>
+                {
+                  dimensionsArray?.results.map((dimension) => (
+                    <li key={dimension.id} className='text-white cursor-pointer' onClick={() => handleDimension(dimension.url)}>
+                      {dimension.name}
+                    </li>
+                  ))
+                }
+            </ul>
+          }
 
           <h2 className='text-dark-green'>Welcome to the crazy universe!</h2>
       </form>
