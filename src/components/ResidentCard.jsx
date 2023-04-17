@@ -18,7 +18,7 @@ const ResidentCard = ({resident}) => {
     }, [])
 
     return (
-        <article className='border-2 border-dark-green'>
+        <article className='border-2 border-dark-green residentCard'>
             <div className='relative'>
                 <img className='w-full object-center border-b-2 border-dark-green hover:animate-pulse' src={residentInfo?.image} alt="Resident image" />
 

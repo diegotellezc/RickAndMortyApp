@@ -71,9 +71,9 @@ function App() {
                 }
             </ul>
           }
-
-          <h2 className='text-dark-green'>Welcome to the crazy universe!</h2>
-      </form>
+        </form>
+      
+        <h2 className='text-dark-green'>Welcome to the crazy universe!</h2>
       </header>
 
       <Location location={location} />
