@@ -1,29 +1,62 @@
-return function ModalInfo() {
+export function ModalInfo({residentInfo, closeModal}) {
+    const handleClickCloseButton = () => {
+        closeModal()
+    }
+
     return (
-        <div className="fixed z-10 inset-0 overflow-y-auto">
-        <div className="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
-            <div className="fixed inset-0 transition-opacity" aria-hidden="true">
-            <div className="absolute inset-0 bg-gray-500 opacity-75"></div>
-            </div>
-            <span className="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
-            <div className="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
-            <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
-                <div className="sm:flex sm:items-start">
-                <div className="mt-3 text-center sm:mt-0 sm:text-left">
-                    <div className="mt-2">
-                    <img src={image} alt="imagen" className="mx-auto h-48 w-auto" />
+        <section className='fixed inset-0 flex items-center justify-center bg-opacity-70 bg-black z-40'>
+                    <div className='rounded-md relative border-2 border-dark-green w-[70%] sm:w-[60%] max-w-[800px] modalCard max-h-[80vh] flex flex-col overflow-y-auto md:flex-row md:max-w-2xl'>
+                        <div>
+                            <img className='w-full md:w-[500px] md:h-full md:object-cover' src={residentInfo?.image} alt="Resident image" />
+                        </div>
+                        
+                        <div className='w-full text-white p-8 flex flex-col bg-black border-t-2 border-dark-green md:border-t-0 md:border-l-2'>
+                            <h3 className='text-2xl font-semibold self-center pb-5 text-dark-green'>{residentInfo?.name}</h3>
+
+                            <ul>
+                                <li>
+                                    <span className='text-light-gray'>Species: </span>
+                                    <span>{residentInfo?.species}</span>
+                                </li>
+
+                                <li>
+                                    <span className='text-light-gray'>Type: </span>
+                                    <span>{(residentInfo?.type) || "Undefined"} </span>
+                                </li>
+
+                                <li>
+                                    <span className='text-light-gray'>Status: </span>
+                                    <span>{residentInfo?.status}</span>
+                                </li>
+
+                                <li>
+                                    <span className='text-light-gray'>Gender: </span>
+                                    <span>{residentInfo?.gender}</span>
+                                </li>
+
+                                <li>
+                                    <span className='text-light-gray'>Appearencies: </span>
+                                    <span>{residentInfo?.episode.length}</span>
+                                </li>
+
+                                <li>
+                                    <span className='text-light-gray'>Origin: </span>
+                                    <span>{residentInfo?.origin.name}</span>
+                                </li>
+
+                                <li>
+                                    <span className='text-light-gray'>Location: </span>
+                                    <span>{residentInfo?.location.name}</span>
+                                </li>
+
+                            </ul>
+                        </div>
+
+                        <button onClick={handleClickCloseButton} className='absolute top-2 right-3 cursor-pointer'>
+                            <i className='bx bx-x-circle text-dark-green text-4xl bg-black md:bg-none rounded-full'></i>
+                        </button>
                     </div>
-                    <p className="text-gray-600">{text}</p>
-                </div>
-                </div>
-            </div>
-            <div className="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
-                <button onClick={onClose} type="button" className="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-red-600 text-base font-medium text-white hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 sm:ml-3 sm:w-auto sm:text-sm">
-                Cerrar
-                </button>
-            </div>
-            </div>
-        </div>
-        </div>
+                    
+                </section>
     );
 }

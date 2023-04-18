@@ -4,6 +4,7 @@ import { getRandomDimension } from './helpers/random'
 import axios from 'axios'
 import Location from './components/Location'
 import ResidentList from './components/ResidentList'
+import TitleImage from './components/TitleImage'
 
 function App() {
   const [location, setLocation] = useState()
@@ -45,11 +46,7 @@ function App() {
     <div className="App bg-[url('/images/bg-rickandmorty.png')] bg-cover font-sans bg-center min-h-screen">
 
       <header className='flex flex-col items-center gap-8 mb-8'>
-        <div className='flex justify-center'>
-          <img className='absolute top-0 w-[100%] z-0 lg:w-[70%] 2xl:w-[55%]' src="/images/greenShadow-title.png" alt="" />
-          <img className='w-[70%] z-10' src="/images/circle-title-rick.png" alt="" />
-          <img className='absolute z-20 w-[80%] top-8 hover:animate-pulse sm:w-[60%] lg:w-[40%]' src="/images/title-rickandmorty.png" alt="" />
-        </div>
+        <TitleImage />
 
         <form className='flex flex-col items-center relative gap-8'>
           <div className='flex w-auto h-[45px] border-2 border-dark-green rounded-md sm:w-[600px]'>
@@ -60,7 +57,7 @@ function App() {
           </div>
 
           {
-            inputValue && <ul className='absolute top-[44px] bg-black/90 gridtext-sm z-20 border-2 border-dark-green sm:w-[600px]'>
+            inputValue && <ul className='absolute top-[44px] bg-black/90 gridtext-sm z-20 border-2 border-dark-green w-full sm:w-[600px]'>
                 {
                   dimensionsArray?.results.map((dimension) => (
                     <li key={dimension.id} className='text-white p-4 cursor-pointer hover:bg-dark-green hover:text-black' onClick={() => handleDimension(dimension.url)}>
