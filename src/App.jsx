@@ -5,6 +5,7 @@ import axios from 'axios'
 import Location from './components/Location'
 import ResidentList from './components/ResidentList'
 import TitleImage from './components/TitleImage'
+import Footer from './components/Footer'
 
 function App() {
   const [location, setLocation] = useState()
@@ -74,6 +75,7 @@ function App() {
 
       <Location location={location} />
       <ResidentList location={location} />
+      <Footer />
 
     </div>
   )
