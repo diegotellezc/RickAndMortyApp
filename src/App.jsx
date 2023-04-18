@@ -44,7 +44,7 @@ function App() {
 
   //Aquí empieza lo que se va a renderizar
   return (
-    <div className="App bg-[url('/images/bg-rickandmorty.png')] bg-cover font-sans bg-center min-h-screen">
+    <div className="App bg-[url('/images/bg-rickandmorty.png')] bg-cover font-sans bg-center flex flex-col min-h-screen">
 
       <header className='flex flex-col items-center gap-8 mb-8'>
         <TitleImage />
@@ -72,10 +72,15 @@ function App() {
       
         <h2 className='text-dark-green'>Welcome to the crazy universe!</h2>
       </header>
-
+      
+      <main className="flex-grow">
       <Location location={location} />
       <ResidentList location={location} />
-      <Footer />
+      </main>
+
+      <footer>
+        <Footer />
+      </footer>
 
     </div>
   )
