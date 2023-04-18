@@ -24,7 +24,7 @@ const ResidentCard = ({resident}) => {
 
     return (
         <>
-            <article onClick={handleModalInfo} className='border-2 border-dark-green residentCard cursor-pointer'>
+            <article onClick={handleModalInfo} className='rounded-md border-2 border-dark-green residentCard cursor-pointer'>
                 <div className='relative'>
                     <img className='w-full object-center border-b-2 border-dark-green hover:animate-pulse' src={residentInfo?.image} alt="Resident image" />
 
@@ -58,7 +58,7 @@ const ResidentCard = ({resident}) => {
             
             {
                 modalIsOpen && <section className='fixed inset-0 flex items-center justify-center bg-opacity-70 bg-black z-40'>
-                    <div className='relative border-2 border-dark-green w-[70%] sm:w-[60%] max-w-[800px] modalCard max-h-[80vh] flex flex-col overflow-y-auto md:flex-row md:max-w-2xl'>
+                    <div className='rounded-md relative border-2 border-dark-green w-[70%] sm:w-[60%] max-w-[800px] modalCard max-h-[80vh] flex flex-col overflow-y-auto md:flex-row md:max-w-2xl'>
                         <div>
                             <img className='w-full md:w-[500px] md:h-full md:object-cover' src={residentInfo?.image} alt="Resident image" />
                         </div>
