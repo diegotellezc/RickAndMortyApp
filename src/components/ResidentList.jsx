@@ -38,7 +38,7 @@ const ResidentList = ({location}) => {
             </section>
 
             <section>
-                <ul className='flex justify-center gap-4 py-4 text-white mb-8'>
+                <ul className='flex justify-center flex-wrap gap-4 py-4 text-white mb-8 mx-2'>
                     {
                         arrayPages.map(page => <li onClick={() => {
                             setCurrentPage(page);
