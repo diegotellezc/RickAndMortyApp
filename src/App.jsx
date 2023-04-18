@@ -74,8 +74,8 @@ function App() {
       </header>
       
       <main className="flex-grow">
-      <Location location={location} />
-      <ResidentList location={location} />
+        <Location location={location} />
+        <ResidentList location={location} />
       </main>
 
       <footer>

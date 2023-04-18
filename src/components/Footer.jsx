@@ -2,7 +2,7 @@ import React from 'react'
 
 const Footer = () => {
     return (
-        <footer className='mt-auto flex flex-col items-center text-white m-8 gap-2 md:flex-row md:justify-evenly'>
+        <footer className='mt-auto flex flex-col items-center text-dark-green m-8 gap-2 md:flex-row md:justify-evenly'>
             
             <div className='flex gap-x-4 md:order-last'>
                 <a className='text-4xl text-dark-green' target='_blank' href="https://github.com/diegotellezc">
