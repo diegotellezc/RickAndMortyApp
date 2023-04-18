@@ -9,7 +9,6 @@ function App() {
   const [location, setLocation] = useState()
   const [inputValue, setInputValue] = useState("")
   const [dimensionsArray, setDimensionsArray] = useState()
-  console.log(dimensionsArray)
 
   const handleInputValue = (e) => {
     e.preventDefault()
@@ -54,7 +53,7 @@ function App() {
 
         <form className='flex flex-col items-center relative gap-8'>
           <div className='flex w-auto h-[45px] border-2 border-dark-green sm:w-[600px]'>
-                <input id='locationId' autocomplete="off" value={inputValue} onChange={handleInputValue} className='w-[80%] h-full border-2 border-none px-8 bg-transparent text-white' type="text" placeholder='Type a dimension...' />
+                <input id='locationId' autoComplete="off" value={inputValue} onChange={handleInputValue} className='w-[80%] h-full border-2 border-none px-8 bg-transparent text-white' type="text" placeholder='Type a dimension...' />
                 <button className='flex justify-center items-center bg-light-green w-[21%] h-full border-dark-green border-l-2 text-white text-xl hover:bg-dark-green hover:text-black'>
                     <i className='bx bx-search'></i>
                 </button>
@@ -78,6 +77,7 @@ function App() {
 
       <Location location={location} />
       <ResidentList location={location} />
+
     </div>
   )
 }
