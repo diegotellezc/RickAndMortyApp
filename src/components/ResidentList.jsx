@@ -44,7 +44,7 @@ const ResidentList = ({location}) => {
                             setCurrentPage(page);
                             window.scrollTo({ top: 0, behavior: 'smooth' });
                         }
-                    } className={`p-3 pageButton rounded-full cursor-pointer ${page === currentPage && "bg-light-green text-white font-bold"}`} key={page}>{page}</li>)
+                    } className={`p-3 pageButton rounded-full hover:scale-110 cursor-pointer ${page === currentPage && "bg-light-green text-white font-bold"}`} key={page}>{page}</li>)
                     }
                 </ul>
             </section>
